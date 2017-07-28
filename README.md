@@ -4,9 +4,10 @@
   - [all?](#all?)
   - [any?](#all?)
   - [chunk](#chunk)
-  - [chunk_while?](#chunk_while)
-  - [any?](#all?)
-  - [any?](#all?)
+  - [chunk_while?](#chunk-while)
+  - [collect](#collect)
+  - [collect_concat](#collect_concat)
+  - [count](#count)
 
 
 
@@ -57,3 +58,35 @@ p a.chunk_while {|i, j| i.even? == j.even? }.to_a
 
 
 -------
+<a name="collect"></a>
+### collect { |obj| block } → array
+### collect → an_enumerator
+
+```rb
+(1..4).map { |i| i*i }      #=> [1, 4, 9, 16]
+(1..4).collect { "cat"  }   #=> ["cat", "cat", "cat", "cat"]
+```
+
+----
+<a name="collect_concat"></a>
+### collect_concat { |obj| block } → array
+### collect_concat → an_enumerator
+
+```rb
+[1, 2, 3, 4].flat_map { |e| [e, -e] } #=> [1, -1, 2, -2, 3, -3, 4, -4]
+[[1, 2], [3, 4]].flat_map { |e| e + [100] } #=> [1, 2, 100, 3, 4, 100]
+```
+
+
+-----
+<a name="count"></a>
+### count → int click to toggle source
+### count(item) → int
+### count { |obj| block } → int
+
+```rb
+ary = [1, 2, 4, 2]
+ary.count               #=> 4
+ary.count(2)            #=> 2
+ary.count{ |x| x%2==0 } #=> 3
+```
